@@ -25,7 +25,7 @@ export const AdminAuth = () => {
 
 
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem("RPData"));
+    const storedData = JSON.parse(localStorage.getItem("adminData"));
     if (
       storedData &&
       storedData.adminToken 

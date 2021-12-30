@@ -2,7 +2,7 @@ import React,{useContext} from 'react';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import {Authcontext} from '../context/auth-context'
+import {Authcontext} from '../../../context/auth-context'
 
 export default function MenuNav() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -17,6 +17,11 @@ export default function MenuNav() {
 
   const auth = useContext(Authcontext)
 
+  const logout = ()=>{
+    auth.adminLogout()
+    window.location.href = "http://localhost:3000/";
+  }
+
   return (
     <div>
       <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
@@ -30,7 +35,7 @@ export default function MenuNav() {
         onClose={handleClose}
       >
 
-        <MenuItem onClick={()=>{auth.logout()}}>Déconnection</MenuItem>
+        <MenuItem onClick={logout}>Déconnection</MenuItem>
       </Menu>
     </div>
   );

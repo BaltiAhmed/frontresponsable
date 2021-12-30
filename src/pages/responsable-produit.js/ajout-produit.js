@@ -70,7 +70,9 @@ const AjoutProduit = (props) => {
   const submit = async (e) => {
     e.preventDefault();
 
-    if (ref.includes("619", 0) && ref.length < 13) {
+    console.log(ref.length)
+
+    if (ref.includes("619", 0) && parseInt(ref.length) < 13) {
       try {
         const formData = new FormData();
 

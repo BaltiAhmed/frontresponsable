@@ -13,13 +13,17 @@ import React from "react";
 import AjoutProduit from "./pages/responsable-produit.js/ajout-produit";
 import UpdateProduit from "./pages/responsable-produit.js/update-produit";
 import image from "./images/image.jpg";
-import Admin from "./pages/admin/App";
+import Admin from "./pages/admin/pages/login";
 import Home from "./pages/home";
 import { RotateLeft } from "@material-ui/icons";
 import ListCommande from "./pages/reponsable-livraison.js/list-commande";
 import DetailCommande from "./pages/reponsable-livraison.js/detailsCommande";
 import ListLivreur from "./pages/reponsable-livraison.js/list-livreur";
 import ListDemandeRetourArticle from "./pages/reponsable-livraison.js/demandeRetourAticle";
+import ListeRP from "./pages/admin/pages/liste-responsable-produit";
+import ListRL from "./pages/admin/pages/list-responsable-livraison";
+import ListClient from "./pages/admin/pages/gestion_client/list-client";
+import NavBarAdmin from './pages/admin/components/nav-bar'
 
 function App() {
   const { RPId, RPLogin, RPLogout, RPToken } = RPAuth();
@@ -42,14 +46,26 @@ function App() {
         <Route path="/" exact component={ListCommande} />
         <Route path="/detailCommande/:id" exact component={DetailCommande} />
         <Route path="/liste-livreur" exact component={ListLivreur} />
-        <Route path="/liste-demande-retour-article" exact component={ListDemandeRetourArticle} />
+        <Route
+          path="/liste-demande-retour-article"
+          exact
+          component={ListDemandeRetourArticle}
+        />
+      </React.Fragment>
+    );
+  } else if (adminToken) {
+    routes = (
+      <React.Fragment>
+        <Route path="/liste-RP" exact component={ListeRP} />
+        <Route path="/liste-RL" component={ListRL} />
+        <Route path="/liste-client" component={ListClient} />
       </React.Fragment>
     );
   } else {
     routes = (
       <React.Fragment>
         <Route path="/" exact component={Home} />
-        <Route path="/responsable" exact component={Login} />
+        <Route path="/responsable"  component={Login} />
         <Route path="/admin" component={Admin} />
       </React.Fragment>
     );
@@ -78,14 +94,14 @@ function App() {
           width: "100%",
           backgroundPosition: "center",
           backgroundSize: "cover",
-          
         }}
       >
         <BrowserRouter>
-          {!RPToken && !RLToken && <NavLogin />}
-          {RPToken && !RLToken && <NavBarRP content={routes} />}
-          {RLToken && !RPToken && <NavBarRL content={routes} />}
-          {!RPToken && !RLToken && routes}
+          {!RPToken && !RLToken && !adminToken && <NavLogin />}
+          {RPToken && !RLToken && !adminToken && <NavBarRP content={routes} />}
+          {RLToken && !RPToken && !adminToken && <NavBarRL content={routes} />}
+          {adminToken && !RPToken && !RLToken && <NavBarAdmin content={routes} />}
+          {!RPToken && !RLToken && !adminToken && routes}
         </BrowserRouter>
         <span></span>
         <span></span>

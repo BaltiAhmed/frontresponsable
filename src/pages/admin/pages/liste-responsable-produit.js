@@ -183,7 +183,7 @@ export default function ListeRP() {
                                             <DeleteForeverIcon style={{ color: "red" }} onClick={async (event) => {
                                                 try {
                                                     let response = await fetch(
-                                                        `http://localhost:5000/api/RProduit/${row._id}`,
+                                                        `http://localhost:5000/api/RLivraison/${row._id}`,
                                                         {
                                                             method: "DELETE",
                                                             headers: {

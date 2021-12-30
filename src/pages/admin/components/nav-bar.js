@@ -133,21 +133,21 @@ export default function NavBar(props) {
         </div>
         <Divider />
         <List>
-          <Link to="/admin" style={{ textDecoration: 'none', color: 'black' }}>
+          <Link to="/liste-RP" style={{ textDecoration: 'none', color: 'black' }}>
             <ListItem button key="Responsables Produits">
               <ListItemIcon> <FormatListBulletedIcon style={{ color: "#039be5" }} /></ListItemIcon>
               <ListItemText primary="Responsables Produits" />
             </ListItem>
           </Link>
 
-          <Link to="/admin/liste-RL" style={{ textDecoration: 'none', color: 'black' }}>
+          <Link to="/liste-RL" style={{ textDecoration: 'none', color: 'black' }}>
             <ListItem button key="Responsables Livraison">
               <ListItemIcon> <FormatListBulletedIcon style={{ color: "#039be5" }} /></ListItemIcon>
               <ListItemText primary="Responsables Livraison" />
             </ListItem>
           </Link>
 
-          <Link to="/admin/liste-client" style={{ textDecoration: 'none', color: 'black' }}>
+          <Link to="/liste-client" style={{ textDecoration: 'none', color: 'black' }}>
             <ListItem button key="client">
               <ListItemIcon> <FormatListBulletedIcon style={{ color: "#039be5" }} /></ListItemIcon>
               <ListItemText primary="Clients" />

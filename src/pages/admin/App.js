@@ -17,9 +17,9 @@ function Admin() {
   if (token) {
     routes = (
       <React.Fragment>
-        <Route path="/admin"  component={ListeRP} />
-        <Route path="/admin/liste-RL" component={ListRL} />
-        <Route path="/admin/liste-client" component={ListClient} />
+        <Route path="/liste-RP"  component={ListeRP} />
+        <Route path="/liste-RL" component={ListRL} />
+        <Route path="/liste-client" component={ListClient} />
 
       </React.Fragment>
     );

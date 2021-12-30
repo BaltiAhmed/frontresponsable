@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import ErrorModel from "../models/error-models";
 import SuccessModel from "../models/success-models";
-import { Authcontext } from '../context/auth-context'
+import { Authcontext } from '../../../context/auth-context'
 
 const Login = () => {
   const [email, setEmail] = useState();
@@ -40,7 +40,8 @@ const Login = () => {
         throw new Error(responsedata.message);
       }
 
-      auth.login(responsedata.admin._id, responsedata.token)
+      auth.adminLogin(responsedata.admin._id, responsedata.token)
+      window.location.href = 'http://localhost:3000/liste-RP';
 
     } catch (err) {
       console.log(err);
